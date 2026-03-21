@@ -191,7 +191,7 @@ const TacticalButton = ({ children, variant = "red", className = "", href, ...pr
     outline: "border border-white/10 hover:border-white/30 hover:bg-white/5 text-white backdrop-blur-md"
   };
 
-  const baseClass = `relative px-12 py-6 font-display uppercase tracking-[0.25em] text-xs transition-all active:scale-95 flex items-center justify-center gap-4 overflow-hidden group ${colors[variant as keyof typeof colors]} ${className}`;
+  const baseClass = `relative font-display uppercase tracking-[0.25em] transition-all active:scale-95 flex items-center justify-center gap-4 overflow-hidden group ${colors[variant as keyof typeof colors]} ${className.includes('px-') ? '' : 'px-12'} ${className.includes('py-') ? '' : 'py-6'} ${className.includes('text-') ? '' : 'text-xs'} ${className}`;
   
   if (href) {
     const isAnchor = href.startsWith('#');
@@ -384,7 +384,7 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <header className="relative h-screen flex items-center justify-center overflow-hidden">
+      <header className="relative min-h-screen flex items-center justify-center overflow-hidden pt-40 pb-20 lg:pt-32">
         <motion.div style={{ opacity, scale, y }} className="absolute inset-0 z-0">
           <img 
             src={IMAGES.hero} 
@@ -404,23 +404,27 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex items-center gap-6 mb-10">
-                <div className="h-[1px] w-24 bg-kmcn-red" />
-                <span className="font-mono text-kmcn-red text-[10px] tracking-[0.6em] uppercase animate-pulse">KMCN_TACTICAL_V5.0 // ONLINE</span>
+              <div className="flex items-center gap-4 sm:gap-6 mb-8 sm:mb-10">
+                <div className="h-[1px] w-12 sm:w-24 bg-kmcn-red" />
+                <span className="font-mono text-kmcn-red text-[9px] sm:text-[10px] tracking-[0.4em] sm:tracking-[0.6em] uppercase animate-pulse">KMCN_TACTICAL_V5.0 // ONLINE</span>
               </div>
-              <h1 className="text-[8vw] md:text-[5rem] font-display uppercase leading-tight tracking-tighter mb-8 glitch chromatic-aberration pt-4" data-text="Krav Maga-KMCN">
-                Krav Maga-KMCN<br />
-                <span className="text-gradient-red glow-red block mt-2">善良必须带点锋芒</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-zinc-400 max-w-4xl mb-12 font-light leading-tight border-l-2 border-kmcn-red/30 pl-10">
+              <div className="mb-8">
+                <h1 className="text-[11vw] md:text-[5rem] font-display uppercase leading-none tracking-tighter glitch chromatic-aberration" data-text="Krav Maga-KMCN">
+                  Krav Maga-KMCN
+                </h1>
+                <div className="text-[7vw] md:text-[3.5rem] font-display uppercase tracking-tight text-gradient-red glow-red mt-4 sm:mt-6 leading-tight">
+                  善良必须带点锋芒
+                </div>
+              </div>
+              <p className="text-lg sm:text-xl md:text-2xl text-zinc-400 max-w-4xl mb-12 font-light leading-relaxed border-l-2 border-kmcn-red/30 pl-6 sm:pl-10">
                 父母无法护你一生，但我们可以教你如何保护自己。<br />
                 Krav Maga（马伽术）源自以色列军方，是全球公认最实用、最高效的近身格斗与防身自卫技术。<br />
                 针对深圳高素质家庭，打造极致的青少年安全防卫马伽术特训。
                 <span className="text-zinc-600 block mt-4 text-sm font-mono uppercase tracking-[0.4em]">Krav Maga: Protect. Defend. Survive.</span>
               </p>
-              <div className="flex flex-col sm:flex-row items-center gap-10">
-                <TacticalButton variant="red" className="w-full sm:w-auto text-xl px-16" href="#booking">
-                  为孩子预约安全评估 // BOOK ASSESSMENT <ArrowRight className="w-8 h-8" />
+              <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-10">
+                <TacticalButton variant="red" className="w-full sm:w-auto text-sm sm:text-xl px-6 sm:px-16 py-4 sm:py-6" href="#booking">
+                  为孩子预约安全评估 <span className="hidden sm:inline">// BOOK ASSESSMENT</span> <ArrowRight className="w-5 h-5 sm:w-8 sm:h-8 ml-2" />
                 </TacticalButton>
                 <div className="flex items-center gap-8">
                   <div className="flex -space-x-6">
