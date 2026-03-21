@@ -27,7 +27,8 @@ import {
   Home,
   Globe,
   Play,
-  X
+  X,
+  Menu
 } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 
@@ -193,11 +194,12 @@ const TacticalButton = ({ children, variant = "red", className = "", href, ...pr
   const baseClass = `relative px-12 py-6 font-display uppercase tracking-[0.25em] text-xs transition-all active:scale-95 flex items-center justify-center gap-4 overflow-hidden group ${colors[variant as keyof typeof colors]} ${className}`;
   
   if (href) {
+    const isAnchor = href.startsWith('#');
     return (
       <a 
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={isAnchor ? undefined : "_blank"}
+        rel={isAnchor ? undefined : "noopener noreferrer"}
         className={baseClass}
         {...props}
       >
@@ -267,6 +269,7 @@ const VideoPlayer = ({ url, poster }: { url: string, poster: string }) => {
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.98]);
@@ -277,6 +280,16 @@ export default function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const navItems = [
+    { label: 'Defense', cn: 'KMCN马伽术' },
+    { label: 'Youth', cn: '青少年自卫' },
+    { label: 'Packages', cn: '马伽术套餐' },
+    { label: 'Long-term', cn: '长训系列' },
+    { label: 'Authority', cn: '权威教官' },
+    { label: 'Overseas', cn: '安全防卫特训' },
+    { label: 'Contact', cn: '联系' }
+  ];
 
   return (
     <div className="relative min-h-screen bg-kmcn-bg text-zinc-100 selection:bg-kmcn-red selection:text-white">
@@ -303,29 +316,21 @@ export default function App() {
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-[70] transition-all duration-1000 ${scrolled ? 'bg-kmcn-bg/80 backdrop-blur-3xl py-4 border-b border-white/5' : 'py-12'}`}>
-        <div className="container mx-auto px-8 flex justify-between items-center">
+      <nav className={`fixed top-0 w-full z-[70] transition-all duration-1000 ${scrolled ? 'bg-kmcn-bg/90 backdrop-blur-3xl py-4 border-b border-white/5 shadow-2xl' : 'py-6 lg:py-12'}`}>
+        <div className="container mx-auto px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center gap-4 group cursor-pointer">
-            <div className="w-16 h-16 flex items-center justify-center overflow-hidden group-hover:rotate-12 transition-transform duration-700">
+            <div className="w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center overflow-hidden group-hover:rotate-12 transition-transform duration-700">
               {/* LOGO CODE START - You can replace the img src below with your own logo file */}
               <img src={IMAGES.logo} alt="KMCN Logo" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
               {/* LOGO CODE END */}
             </div>
             <div className="flex flex-col">
-              <span className="font-display text-3xl tracking-tighter uppercase leading-none">KMCN</span>
-              <span className="font-mono text-[7px] text-zinc-600 uppercase tracking-[0.4em]">专注青少年防身自卫马伽术15年</span>
+              <span className="font-display text-2xl lg:text-3xl tracking-tighter uppercase leading-none">KMCN</span>
+              <span className="font-mono text-[6px] lg:text-[7px] text-zinc-600 uppercase tracking-[0.4em]">专注青少年防身自卫马伽术15年</span>
             </div>
           </div>
           <div className="hidden lg:flex items-center gap-8 font-mono text-[9px] uppercase tracking-[0.3em] text-zinc-500">
-            {[
-              { label: 'Defense', cn: '防身马伽术' },
-              { label: 'Youth', cn: '青少年自卫' },
-              { label: 'Packages', cn: '马伽术套餐' },
-              { label: 'Long-term', cn: '长训系列' },
-              { label: 'Authority', cn: '权威教官' },
-              { label: 'Overseas', cn: '安全防卫特训' },
-              { label: 'Contact', cn: '联系' }
-            ].map((item) => (
+            {navItems.map((item) => (
               <a key={item.label} href={`#${item.label.toLowerCase()}`} className="hover:text-kmcn-red transition-all hover:tracking-[0.5em] duration-500 relative group flex flex-col items-center">
                 <span className="opacity-0 group-hover:opacity-100 absolute -left-4 transition-opacity">/</span>
                 <span className="text-white group-hover:text-kmcn-red whitespace-nowrap">{item.cn}</span>
@@ -333,11 +338,49 @@ export default function App() {
               </a>
             ))}
           </div>
-          <TacticalButton variant="outline" className="hidden sm:flex py-3 px-10 text-[9px]" href="https://www.kmcn.vip">
-            <Radar className="w-4 h-4 animate-spin-slow text-kmcn-red" />
-            申请马伽术教官
-          </TacticalButton>
+          <div className="flex items-center gap-4">
+            <TacticalButton variant="outline" className="hidden sm:flex py-3 px-10 text-[9px]" href="https://www.kmcn.vip">
+              <Radar className="w-4 h-4 animate-spin-slow text-kmcn-red" />
+              申请马伽术教官
+            </TacticalButton>
+            <button 
+              className="lg:hidden text-white p-2 hover:bg-white/10 rounded-md transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="lg:hidden overflow-hidden bg-kmcn-bg/95 backdrop-blur-3xl border-b border-white/10"
+            >
+              <div className="container mx-auto px-6 py-6 flex flex-col gap-6">
+                {navItems.map((item) => (
+                  <a 
+                    key={item.label} 
+                    href={`#${item.label.toLowerCase()}`} 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-between border-b border-white/5 pb-4 text-sm font-light text-zinc-300 hover:text-kmcn-red transition-colors"
+                  >
+                    <span>{item.cn}</span>
+                    <span className="font-mono text-[9px] text-zinc-600 uppercase tracking-[0.3em]">{item.label}</span>
+                  </a>
+                ))}
+                <TacticalButton variant="outline" className="w-full py-4 text-[10px] mt-4" href="https://www.kmcn.vip">
+                  <Radar className="w-4 h-4 animate-spin-slow text-kmcn-red" />
+                  申请马伽术教官
+                </TacticalButton>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {/* Hero Section */}
@@ -376,7 +419,7 @@ export default function App() {
                 <span className="text-zinc-600 block mt-4 text-sm font-mono uppercase tracking-[0.4em]">Krav Maga: Protect. Defend. Survive.</span>
               </p>
               <div className="flex flex-col sm:flex-row items-center gap-10">
-                <TacticalButton variant="red" className="w-full sm:w-auto text-xl px-16">
+                <TacticalButton variant="red" className="w-full sm:w-auto text-xl px-16" href="#booking">
                   为孩子预约安全评估 // BOOK ASSESSMENT <ArrowRight className="w-8 h-8" />
                 </TacticalButton>
                 <div className="flex items-center gap-8">
@@ -489,39 +532,7 @@ export default function App() {
         </div>
       </section>
 
-      <div className="section-divider" />
 
-      {/* Training Content Section */}
-      <section className="py-24 bg-tactical-gray relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <img src={IMAGES.training1} alt="KMCN马伽术核心训练课程" className="w-full h-full object-cover" />
-        </div>
-        <div className="container mx-auto px-8 relative z-10">
-          <TacticalHeader 
-            title="核心训练内容 // TRAINING CURRICULUM" 
-            subtitle="Comprehensive security training covering awareness, strategy, and skills." 
-          />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "安全意识 // AWARENESS", desc: "识别潜在威胁，建立危险感知能力，防患于未然。", icon: <Eye className="w-8 h-8" /> },
-              { title: "战术策略 // STRATEGY", desc: "学习环境评估、脱困路径规划及心理博弈策略。", icon: <Target className="w-8 h-8" /> },
-              { title: "防卫技能 // SKILLS", desc: "硬核马伽术实战技术，针对各种攻击的瞬间反击。", icon: <Sword className="w-8 h-8" /> },
-              { title: "场景模拟 // SIMULATION", desc: "模拟危险场景，并用相应的技术来处理，或制服打击，达到脱身目的。", icon: <Radar className="w-8 h-8" /> }
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                {...fadeIn}
-                transition={{ delay: i * 0.1 }}
-                className="glass p-8 border-t-2 border-kmcn-red/20 hover:border-kmcn-red transition-all group"
-              >
-                <div className="text-kmcn-red mb-6 group-hover:scale-110 transition-transform">{item.icon}</div>
-                <h4 className="text-lg font-display uppercase mb-4 tracking-tight">{item.title}</h4>
-                <p className="text-zinc-500 text-xs leading-relaxed font-light">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <div className="section-divider" />
 
@@ -596,6 +607,11 @@ export default function App() {
               </div>
             </div>
           </div>
+          <div className="mt-20 flex justify-center">
+            <TacticalButton variant="red" className="text-lg px-12" href="#booking">
+              为孩子预约安全评估 // BOOK ASSESSMENT
+            </TacticalButton>
+          </div>
         </div>
       </section>
 
@@ -639,45 +655,13 @@ export default function App() {
                   </div>
                 ))}
               </div>
-              <TacticalButton variant="green" className="w-full sm:w-auto text-lg px-16">预约青少年评估课 // BOOK EVALUATION</TacticalButton>
+              <TacticalButton variant="green" className="w-full sm:w-auto text-lg px-16" href="#booking">预约青少年评估课 // BOOK EVALUATION</TacticalButton>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <div className="section-divider" />
 
-      {/* What can you gain Section */}
-      <section className="py-24 bg-zinc-950 relative overflow-hidden">
-        <div className="container mx-auto px-8 relative z-10">
-          <TacticalHeader 
-            title="可以收获什么？ // WHAT YOU WILL GAIN" 
-            subtitle="Comprehensive physical and mental development through Krav Maga." 
-            accent="green"
-          />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: "危险认知", desc: "理解青少年面临的危险和安全问题（来自成年攻击者和同龄的霸凌），并学习妥当处理的能力。", icon: <Eye className="w-6 h-6" /> },
-              { title: "防范未然", desc: "提前行动和避免危险，这包括态势感知、预防暴力、应对来自陌生人的危险等。", icon: <Radar className="w-6 h-6" /> },
-              { title: "基础防卫", desc: "学习和训练基本的击打、防守技术以及学习定位合适的攻击目标。", icon: <Target className="w-6 h-6" /> },
-              { title: "身体素质", desc: "锻炼身体能力，如协调性、功能性力量和灵活性，这是未来健康成长的重要基础。", icon: <Activity className="w-6 h-6" /> },
-              { title: "核心技术", desc: "学习和练习在少儿马伽术的自卫技术（含如何应对击打、脚踢、熊抱、抓拽、跌倒等）。", icon: <Shield className="w-6 h-6" /> },
-              { title: "心理抗压", desc: "模拟情境训练、毅力和压力训练。训练压力下的反应能力和镇定应对的能力。", icon: <Brain className="w-6 h-6" /> }
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                {...fadeIn}
-                transition={{ delay: i * 0.1 }}
-                className="glass-green p-8 border-l-2 border-kmcn-green/30 hover:border-kmcn-green transition-all group"
-              >
-                <div className="text-kmcn-green mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
-                <h4 className="text-xl font-display uppercase mb-3 text-white">{item.title}</h4>
-                <p className="text-zinc-400 text-sm leading-relaxed font-light">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <div className="section-divider" />
 
@@ -795,6 +779,68 @@ export default function App() {
               </motion.div>
             )}
           </AnimatePresence>
+        </div>
+      </section>
+
+      <div className="section-divider" />
+
+      {/* Core Value Section */}
+      <section id="value" className="py-24 bg-zinc-950 relative overflow-hidden">
+        <div className="container mx-auto px-8 relative z-10">
+          <div className="text-center mb-16">
+            <TacticalHeader 
+              title="核心训练与收获 // CORE VALUE & GAINS" 
+              subtitle="Comprehensive physical and mental development through Krav Maga." 
+              accent="green"
+            />
+          </div>
+          
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-8">
+            {/* Left Column */}
+            <div className="flex-1 flex flex-col gap-8 w-full lg:text-right">
+              {[
+                { title: "危险认知", desc: "理解青少年面临的危险和安全问题（来自成年攻击者和同龄的霸凌），并学习妥当处理的能力。", icon: <Eye className="w-6 h-6" /> },
+                { title: "防范未然", desc: "提前行动和避免危险，这包括态势感知、预防暴力、应对来自陌生人的危险等。", icon: <Radar className="w-6 h-6" /> },
+                { title: "基础防卫", desc: "学习和训练基本的击打、防守技术以及学习定位合适的攻击目标。", icon: <Target className="w-6 h-6" /> }
+              ].map((item, i) => (
+                <motion.div key={i} {...fadeIn} transition={{ delay: i * 0.1 }} className="glass-green p-6 border-l-2 lg:border-l-0 lg:border-r-2 border-kmcn-green/30 hover:border-kmcn-green transition-all group flex flex-col lg:items-end">
+                  <div className="text-kmcn-green mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
+                  <h4 className="text-xl font-display uppercase mb-2 text-white">{item.title}</h4>
+                  <p className="text-zinc-400 text-sm leading-relaxed font-light">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Center Image */}
+            <motion.div {...fadeIn} className="w-full lg:w-1/3 aspect-[3/4] relative shrink-0">
+              <div className="absolute inset-0 bg-kmcn-green/20 blur-2xl rounded-full" />
+              <div className="relative w-full h-full corner-border before:border-kmcn-green after:border-kmcn-green p-2 bg-zinc-900/50 backdrop-blur-sm">
+                <img src={IMAGES.youthTraining} alt="KMCN Training" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" referrerPolicy="no-referrer" />
+                <div className="absolute inset-0 border border-kmcn-green/20 m-2" />
+              </div>
+            </motion.div>
+
+            {/* Right Column */}
+            <div className="flex-1 flex flex-col gap-8 w-full text-left">
+              {[
+                { title: "身体素质", desc: "锻炼身体能力，如协调性、功能性力量和灵活性，这是未来健康成长的重要基础。", icon: <Activity className="w-6 h-6" /> },
+                { title: "核心技术", desc: "学习和练习在少儿马伽术的自卫技术（含如何应对击打、脚踢、熊抱、抓拽、跌倒等）。", icon: <Shield className="w-6 h-6" /> },
+                { title: "心理抗压", desc: "模拟情境训练、毅力和压力训练。训练压力下的反应能力和镇定应对的能力。", icon: <Brain className="w-6 h-6" /> }
+              ].map((item, i) => (
+                <motion.div key={i} {...fadeIn} transition={{ delay: i * 0.1 }} className="glass-green p-6 border-l-2 border-kmcn-green/30 hover:border-kmcn-green transition-all group flex flex-col items-start">
+                  <div className="text-kmcn-green mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
+                  <h4 className="text-xl font-display uppercase mb-2 text-white">{item.title}</h4>
+                  <p className="text-zinc-400 text-sm leading-relaxed font-light">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="mt-20 flex justify-center">
+            <TacticalButton variant="green" className="text-lg px-12" href="#booking">
+              为孩子预约安全评估 // BOOK ASSESSMENT
+            </TacticalButton>
+          </div>
         </div>
       </section>
 
@@ -984,7 +1030,7 @@ export default function App() {
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <TacticalButton variant="red" className="text-lg px-16">定制准留学生生存包 // CUSTOMIZE SURVIVAL KIT</TacticalButton>
+              <TacticalButton variant="red" className="text-lg px-16" href="#booking">定制准留学生生存包 // CUSTOMIZE SURVIVAL KIT</TacticalButton>
             </div>
           </div>
         </div>
@@ -1018,7 +1064,7 @@ export default function App() {
               </div>
             </motion.div>
             
-            <motion.div {...fadeIn} className="glass p-12 relative corner-border overflow-hidden">
+            <motion.div id="booking" {...fadeIn} className="glass p-12 relative corner-border overflow-hidden scroll-mt-32">
               <div className="absolute top-0 right-0 p-6 font-mono text-[7px] text-zinc-700 tracking-[0.5em]">SECURE_CHANNEL_ENCRYPTED_V2.0</div>
               <div className="text-center relative z-10">
                 <h3 className="text-2xl font-display uppercase mb-10 tracking-tighter text-gradient-red">扫码预约评估课 // SCAN TO BOOK</h3>

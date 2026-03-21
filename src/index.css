@@ -16,6 +16,9 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-kmcn-bg text-zinc-100 font-sans antialiased selection:bg-kmcn-red selection:text-white overflow-x-hidden;
   }
