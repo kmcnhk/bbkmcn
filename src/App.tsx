@@ -72,6 +72,7 @@ const packageDetails = [
           <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>双手被人抓住后，怎样保护自己以及反击</span></li>
           <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>如何利用手带背包、雨伞等随身物品保护自己</span></li>
           <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>倒地后的自我保护以及防御来袭的施暴者</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>克服恐惧重塑自信，掌握核心发力技巧，在危机时刻果断打出极具破坏力的全力一击</span></li>
         </ul>
       </div>
     )
