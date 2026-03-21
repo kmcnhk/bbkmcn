@@ -57,50 +57,66 @@ const packageDetails = [
     title: "基础防卫协议 (9小时三天定制课 A/B班)",
     image: "http://www.kravmaga.hk/images/b1.jpg",
     content: (
-      <ul className="space-y-3 list-decimal pl-5 text-sm font-light">
-        <li>小手腕被抓不懂礼貌的同龄者抓住，如何挣脱同时自己能逃跑（2）</li>
-        <li>后方不怀好意的人抓住我们的肩膀，怎样才能安全逃脱（1）</li>
-        <li>被陌生人抓住头发，如何有效挣脱及防守（1）</li>
-        <li>被人搂住腰拖走，如何快速反击制服他（2）</li>
-        <li>被坏蛋抓住手拉扯，如何利用技巧摔倒对方（1）</li>
-        <li>衣领胸口被抓，面对霸道挑衅如何快速摔倒他（2）</li>
-        <li>双手被人抓住后，怎样保护自己以及反击（1）</li>
-        <li>如何利用手带背包、雨伞等随身物品保护自己，关键时刻能防身救命</li>
-        <li>倒地后的自我保护以及防御来袭的施暴者（1）</li>
-      </ul>
+      <div className="space-y-6">
+        <div className="bg-kmcn-green/10 border-l-4 border-kmcn-green p-4 rounded-r-lg">
+          <p className="text-kmcn-green font-medium text-sm">核心理念 // CORE PHILOSOPHY</p>
+          <p className="text-zinc-300 text-xs mt-1">建立初步的安全边界意识，掌握在常见校园与街头冲突中的快速脱困技巧，以“安全逃脱”为第一原则。</p>
+        </div>
+        <ul className="grid sm:grid-cols-2 gap-4 text-sm font-light text-zinc-400">
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>小手腕被抓不懂礼貌的同龄者抓住，如何挣脱同时自己能逃跑</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>后方不怀好意的人抓住我们的肩膀，怎样才能安全逃脱</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>被陌生人抓住头发，如何有效挣脱及防守</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>被人搂住腰拖走，如何快速反击制服他</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>被坏蛋抓住手拉扯，如何利用技巧摔倒对方</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>衣领胸口被抓，面对霸道挑衅如何快速摔倒他</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>双手被人抓住后，怎样保护自己以及反击</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>如何利用手带背包、雨伞等随身物品保护自己</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>倒地后的自我保护以及防御来袭的施暴者</span></li>
+        </ul>
+      </div>
     )
   },
   {
     title: "进阶响应课程 (18小时六天进阶定制课 A/B班)",
     image: "http://www.kravmaga.hk/images/b2.jpg",
     content: (
-      <ul className="space-y-3 list-decimal pl-5 text-sm font-light">
-        <li>被强壮的手抓住后，如何利用技巧挣脱（1）</li>
-        <li>被后面的陌生人抓住头发，我们如何挣脱（1）</li>
-        <li>面对从侧方伸过来的手臂，如何巧妙逃脱（1）</li>
-        <li>衣服被双手抓住撕扯推搡，如何摆脱不利局面（2）</li>
-        <li>纠缠中衣领不幸被抓住，如何快速放倒对方（1）</li>
-        <li>路上遭遇坏蛋后方熊抱，如何快速挣脱安全回家（2）</li>
-        <li>被人掐住脖子，如何正确防御保护自己（4）</li>
-        <li>脖子被后方突如其来的手勒住，马伽术教你如何挣脱</li>
-        <li>被陌生人从前面抱住，如何迅速反击安全逃脱（2）</li>
-        <li>后方被人搂住，如何进行有效的反击(1)</li>
-        <li>面对挥来的一拳，如何避其锋芒反击对手（1）</li>
-        <li>面对多人威胁如何有效保护自己</li>
-      </ul>
+      <div className="space-y-6">
+        <div className="bg-kmcn-green/10 border-l-4 border-kmcn-green p-4 rounded-r-lg">
+          <p className="text-kmcn-green font-medium text-sm">战术重点 // TACTICAL FOCUS</p>
+          <p className="text-zinc-300 text-xs mt-1">面对力量悬殊、突发性强及多方位的暴力威胁，强化肌肉记忆与抗压能力，实现本能级的防卫反击。</p>
+        </div>
+        <ul className="grid sm:grid-cols-2 gap-4 text-sm font-light text-zinc-400">
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>被强壮的手抓住后，如何利用技巧挣脱</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>被后面的陌生人抓住头发，我们如何挣脱</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>面对从侧方伸过来的手臂，如何巧妙逃脱</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>衣服被双手抓住撕扯推搡，如何摆脱不利局面</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>纠缠中衣领不幸被抓住，如何快速放倒对方</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>路上遭遇坏蛋后方熊抱，如何快速挣脱安全回家</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>被人掐住脖子，如何正确防御保护自己</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>脖子被后方突如其来的手勒住，马伽术教你如何挣脱</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>被陌生人从前面抱住，如何迅速反击安全逃脱</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>后方被人搂住，如何进行有效的反击</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>面对挥来的一拳，如何避其锋芒反击对手</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span>面对多人威胁如何有效保护自己</span></li>
+        </ul>
+      </div>
     )
   },
   {
     title: "生存技术能力套餐 (高级特训)",
     image: "http://www.kravmaga.hk/images/b3.jpg",
     content: (
-      <div className="space-y-4 text-sm font-light">
-        <p>包含9小时与18小时所有基础与进阶防卫技能，并在此基础上进行深度拓展：</p>
-        <ul className="space-y-3 list-disc pl-5">
-          <li><strong>全场景综合实战演练：</strong> 模拟更复杂、多变的真实危机场景，提升临场反应速度。</li>
-          <li><strong>定制化极端生存技术：</strong> 针对特定高危环境（如狭小空间、昏暗环境）的防卫策略。</li>
-          <li><strong>精英级战术思维培养：</strong> 从被动防卫到主动态势感知，培养提前规避风险的战略眼光。</li>
-          <li><strong>长期能力维持与心理建设：</strong> 持续的压力测试与心理辅导，打造坚不可摧的防卫本能与自信心。</li>
+      <div className="space-y-6">
+        <div className="bg-kmcn-green/10 border-l-4 border-kmcn-green p-4 rounded-r-lg">
+          <p className="text-kmcn-green font-medium text-sm">终极目标 // ULTIMATE SURVIVAL</p>
+          <p className="text-zinc-300 text-xs mt-1">超越单纯的肢体防卫，培养精英级的战术思维与极端环境下的生存能力，打造坚不可摧的心理素质。</p>
+        </div>
+        <p className="text-zinc-400 text-sm">包含9小时与18小时所有基础与进阶防卫技能，并在此基础上进行深度拓展：</p>
+        <ul className="grid sm:grid-cols-2 gap-4 text-sm font-light text-zinc-400">
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span><strong className="text-zinc-200">全场景综合实战演练：</strong> 模拟更复杂、多变的真实危机场景，提升临场反应速度。</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span><strong className="text-zinc-200">定制化极端生存技术：</strong> 针对特定高危环境（如狭小空间、昏暗环境）的防卫策略。</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span><strong className="text-zinc-200">精英级战术思维培养：</strong> 从被动防卫到主动态势感知，培养提前规避风险的战略眼光。</span></li>
+          <li className="flex gap-3"><Shield className="w-4 h-4 text-kmcn-green shrink-0 mt-0.5"/> <span><strong className="text-zinc-200">长期能力维持与心理建设：</strong> 持续的压力测试与心理辅导，打造坚不可摧的防卫本能与自信心。</span></li>
         </ul>
       </div>
     )
@@ -726,49 +742,47 @@ export default function App() {
 
           <AnimatePresence>
             {selectedPackage !== null && (
-              <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  onClick={() => setSelectedPackage(null)}
-                  className="absolute inset-0 bg-black/90 backdrop-blur-sm cursor-pointer"
-                />
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                  className="relative w-full max-w-5xl max-h-[90vh] bg-zinc-950 flex flex-col md:flex-row overflow-hidden shadow-2xl rounded-2xl"
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 50 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-md overflow-y-auto cursor-pointer"
+                onClick={() => setSelectedPackage(null)}
+              >
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedPackage(null);
+                  }}
+                  className="fixed top-4 right-4 sm:top-8 sm:right-8 z-[110] w-12 h-12 bg-black/50 hover:bg-kmcn-green text-white flex items-center justify-center rounded-full backdrop-blur-md transition-all shadow-lg"
                 >
-                  <button 
-                    onClick={() => setSelectedPackage(null)}
-                    className="absolute top-4 right-4 z-20 w-10 h-10 bg-black/40 hover:bg-kmcn-green text-white flex items-center justify-center rounded-full backdrop-blur-md transition-all"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                  <div className="w-full md:w-2/5 h-64 md:h-auto relative flex-shrink-0">
-                    <img 
-                      src={packageDetails[selectedPackage].image} 
-                      alt={packageDetails[selectedPackage].title}
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-zinc-950 via-transparent to-transparent opacity-80" />
+                  <X className="w-6 h-6" />
+                </button>
+                
+                <div className="w-full h-[40vh] sm:h-[50vh] relative">
+                  <img 
+                    src={packageDetails[selectedPackage].image} 
+                    alt={packageDetails[selectedPackage].title}
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                </div>
+
+                <div className="container mx-auto px-6 py-12 max-w-4xl -mt-20 relative z-10 cursor-default" onClick={(e) => e.stopPropagation()}>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-1 bg-kmcn-green" />
+                    <span className="font-mono text-xs text-kmcn-green tracking-[0.3em] uppercase drop-shadow-md">Course Details</span>
                   </div>
-                  <div className="w-full md:w-3/5 p-8 md:p-12 overflow-y-auto flex flex-col justify-center">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-8 h-1 bg-kmcn-green" />
-                      <span className="font-mono text-[10px] text-kmcn-green tracking-[0.3em] uppercase">Course Details</span>
-                    </div>
-                    <h4 className="text-2xl md:text-3xl font-display uppercase tracking-tighter text-white mb-8">
-                      {packageDetails[selectedPackage].title}
-                    </h4>
-                    <div className="text-zinc-400 font-light text-sm leading-relaxed">
-                      {packageDetails[selectedPackage].content}
-                    </div>
+                  <h4 className="text-3xl md:text-5xl font-display uppercase tracking-tighter text-white mb-12 drop-shadow-lg">
+                    {packageDetails[selectedPackage].title}
+                  </h4>
+                  <div className="text-zinc-200 font-light text-base sm:text-lg leading-relaxed drop-shadow-md">
+                    {packageDetails[selectedPackage].content}
                   </div>
-                </motion.div>
-              </div>
+                </div>
+              </motion.div>
             )}
           </AnimatePresence>
         </div>
