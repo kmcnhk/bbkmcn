@@ -423,8 +423,8 @@ export default function App() {
                 <span className="text-zinc-600 block mt-4 text-sm font-mono uppercase tracking-[0.4em]">Krav Maga: Protect. Defend. Survive.</span>
               </p>
               <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-10">
-                <TacticalButton variant="red" className="w-full sm:w-auto text-sm sm:text-xl px-6 sm:px-16 py-4 sm:py-6" href="#booking">
-                  为孩子预约安全评估 <span className="hidden sm:inline">// BOOK ASSESSMENT</span> <ArrowRight className="w-5 h-5 sm:w-8 sm:h-8 ml-2" />
+                <TacticalButton variant="red" className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-12 py-4" href="#booking">
+                  为孩子预约安全评估 <span className="hidden sm:inline">// BOOK ASSESSMENT</span> <ArrowRight className="w-5 h-5 ml-2" />
                 </TacticalButton>
                 <div className="flex items-center gap-8">
                   <div className="flex -space-x-6">
@@ -462,7 +462,7 @@ export default function App() {
       </header>
 
       {/* Slogan Banner */}
-      <section id="defense" className="py-20 bg-kmcn-red relative overflow-hidden">
+      <section id="defense" className="py-12 md:py-16 bg-kmcn-red relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
         <div className="container mx-auto px-8 relative z-10 text-center">
           <motion.div
@@ -483,7 +483,7 @@ export default function App() {
       </section>
 
       {/* Philosophy Section */}
-      <section id="philosophy" className="py-24 relative bg-tactical-deep">
+      <section id="philosophy" className="py-12 md:py-16 relative bg-tactical-deep">
         <div className="container mx-auto px-8">
           <TacticalHeader 
             title="Krav Maga-KMCN 核心训练理念 // CORE PHILOSOPHY" 
@@ -611,8 +611,8 @@ export default function App() {
               </div>
             </div>
           </div>
-          <div className="mt-20 flex justify-center">
-            <TacticalButton variant="red" className="text-lg px-12" href="#booking">
+          <div className="mt-12 md:mt-16 flex justify-center">
+            <TacticalButton variant="red" className="text-sm md:text-base px-8 md:px-12 py-4" href="#booking">
               为孩子预约安全评估 // BOOK ASSESSMENT
             </TacticalButton>
           </div>
@@ -844,8 +844,8 @@ export default function App() {
             </div>
           </div>
           
-          <div className="mt-20 flex justify-center">
-            <TacticalButton variant="green" className="text-lg px-12" href="#booking">
+          <div className="mt-12 md:mt-16 flex justify-center">
+            <TacticalButton variant="green" className="text-sm md:text-base px-8 md:px-12 py-4" href="#booking">
               为孩子预约安全评估 // BOOK ASSESSMENT
             </TacticalButton>
           </div>
@@ -1038,7 +1038,7 @@ export default function App() {
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <TacticalButton variant="red" className="text-lg px-16" href="#booking">定制准留学生生存包 // CUSTOMIZE SURVIVAL KIT</TacticalButton>
+              <TacticalButton variant="red" className="text-sm md:text-base px-8 md:px-12 py-4" href="#booking">定制准留学生生存包 // CUSTOMIZE SURVIVAL KIT</TacticalButton>
             </div>
           </div>
         </div>
