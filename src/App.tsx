@@ -36,7 +36,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 // To change images, replace the URLs below with your own hosted image links.
 const IMAGES = {
   hero: "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?q=80&w=2070&auto=format&fit=crop", // Tactical training
-  youthTraining: "https://images.unsplash.com/photo-1599058917233-35836d3b5e82?q=80&w=2070&auto=format&fit=crop", // Martial arts youth
+  youthTraining: "http://www.kravmaga.hk/images/bb.jpg", // Martial arts youth
   overseasStudy: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop", // Students
   dojo: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop", // Training gym
   action: "http://www.kravmaga.hk/images/2021821.jpg", // Combat action
