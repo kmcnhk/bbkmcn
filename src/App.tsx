@@ -292,7 +292,7 @@ export default function App() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-kmcn-bg text-zinc-100 selection:bg-kmcn-red selection:text-white">
+    <div className="relative min-h-screen bg-kmcn-bg text-zinc-100 selection:bg-kmcn-red selection:text-white overflow-x-hidden w-full">
       {/* Tactical UI Layer */}
       <div className="fixed inset-0 pointer-events-none z-[60] scanline" />
       <div className="fixed inset-0 pointer-events-none z-0 tactical-grid opacity-20" />
@@ -408,9 +408,9 @@ export default function App() {
                 <div className="h-[1px] w-24 bg-kmcn-red" />
                 <span className="font-mono text-kmcn-red text-[10px] tracking-[0.6em] uppercase animate-pulse">KMCN_TACTICAL_V5.0 // ONLINE</span>
               </div>
-              <h1 className="text-[8vw] md:text-[5rem] font-display uppercase leading-[0.8] tracking-tighter mb-8 glitch chromatic-aberration" data-text="Krav Maga-KMCN">
+              <h1 className="text-[8vw] md:text-[5rem] font-display uppercase leading-tight tracking-tighter mb-8 glitch chromatic-aberration pt-4" data-text="Krav Maga-KMCN">
                 Krav Maga-KMCN<br />
-                <span className="text-gradient-red glow-red">善良必须带点锋芒</span>
+                <span className="text-gradient-red glow-red block mt-2">善良必须带点锋芒</span>
               </h1>
               <p className="text-xl md:text-2xl text-zinc-400 max-w-4xl mb-12 font-light leading-tight border-l-2 border-kmcn-red/30 pl-10">
                 父母无法护你一生，但我们可以教你如何保护自己。<br />
@@ -517,7 +517,7 @@ export default function App() {
                 key={i}
                 {...fadeIn}
                 transition={{ delay: i * 0.15 }}
-                className="bg-kmcn-bg p-12 group hover:bg-zinc-900/30 transition-all duration-1000 relative overflow-hidden"
+                className="bg-kmcn-bg p-8 lg:p-10 group hover:bg-zinc-900/30 transition-all duration-1000 relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-6 font-mono text-[7px] text-zinc-800 group-hover:text-kmcn-red transition-colors tracking-[0.3em]">
                   {item.tag}_MODULE_0{i+1}
@@ -621,23 +621,25 @@ export default function App() {
       <section id="youth" className="py-24 relative overflow-hidden bg-tactical-deep">
         <div className="absolute top-0 right-0 w-2/3 h-full bg-kmcn-green/5 blur-[200px] rounded-full translate-x-1/3" />
         <div className="container mx-auto px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-24 items-center">
-            <motion.div {...fadeIn} className="order-2 lg:order-1 relative">
-              <div className="aspect-video rounded-sm overflow-hidden border border-white/5 relative group corner-border before:border-kmcn-green after:border-kmcn-green bg-black">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <motion.div {...fadeIn} className="order-2 lg:order-1 relative min-w-0 w-full">
+              <div className="aspect-video rounded-sm overflow-hidden border border-white/5 relative group corner-border before:border-kmcn-green after:border-kmcn-green bg-black max-w-full">
                 <VideoPlayer 
                   url="https://yun.kmcn.vip/c3364607vodcq1304509294/38796dee1253642699394401777/sE8mAUE1JgAA.mp4"
                   poster={IMAGES.videoPoster}
                 />
               </div>
-              <div className="absolute -top-10 -left-10 w-64 h-64 border border-kmcn-green/5 rounded-full animate-spin-slow" />
+              <div className="absolute -top-10 -left-10 w-64 h-64 border border-kmcn-green/5 rounded-full animate-spin-slow pointer-events-none" />
             </motion.div>
-            <motion.div {...fadeIn} className="order-1 lg:order-2">
+            <motion.div {...fadeIn} className="order-1 lg:order-2 min-w-0 w-full">
               <div className="flex items-center gap-6 mb-8">
                 <div className="h-[1px] w-24 bg-kmcn-green" />
                 <span className="font-mono text-kmcn-green text-[10px] tracking-[0.6em] uppercase">Youth_Security_Protocol</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-display uppercase leading-[0.8] mb-10 tracking-tighter">
-                青少年<span className="text-gradient-green glow-green">专属</span><br />安全马伽术特训体系 // YOUTH SYSTEM
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-display uppercase leading-tight mb-10 tracking-tighter">
+                青少年<span className="text-gradient-green glow-green">专属</span><br />
+                安全马伽术特训体系<br className="sm:hidden" />
+                <span className="text-xl sm:text-2xl md:text-4xl text-zinc-500 block mt-2">// YOUTH SYSTEM</span>
               </h2>
               <p className="text-zinc-400 text-lg mb-12 leading-relaxed font-light border-l-2 border-kmcn-green/30 pl-10">
                 针对青少年身体发育特点，我们将硬核马伽术与亲和力教学相结合。在保持“酷”的同时，确保训练的科学性与趣味性，建立孩子由内而外的自信。
@@ -655,7 +657,9 @@ export default function App() {
                   </div>
                 ))}
               </div>
-              <TacticalButton variant="green" className="w-full sm:w-auto text-lg px-16" href="#booking">预约青少年评估课 // BOOK EVALUATION</TacticalButton>
+              <TacticalButton variant="green" className="w-full sm:w-auto text-sm sm:text-lg px-4 sm:px-12" href="#booking">
+                预约青少年评估课 <span className="hidden sm:inline">// BOOK EVALUATION</span>
+              </TacticalButton>
             </motion.div>
           </div>
         </div>
@@ -1037,7 +1041,7 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-40 relative bg-tactical-deep">
+      <section id="contact" className="py-24 relative bg-tactical-deep">
         <div className="container mx-auto px-8">
           <div className="grid lg:grid-cols-2 gap-24">
             <motion.div {...fadeIn}>
@@ -1147,7 +1151,7 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-32 border-t border-white/5 relative overflow-hidden bg-zinc-950">
+      <footer className="py-16 border-t border-white/5 relative overflow-hidden bg-zinc-950">
         <div className="container mx-auto px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
             <div className="col-span-1 md:col-span-2">
