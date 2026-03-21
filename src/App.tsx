@@ -37,11 +37,11 @@ const IMAGES = {
   youthTraining: "https://images.unsplash.com/photo-1599058917233-35836d3b5e82?q=80&w=2070&auto=format&fit=crop", // Martial arts youth
   overseasStudy: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop", // Students
   dojo: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop", // Training gym
-  action: "https://images.unsplash.com/photo-1555597673-b21d5c935865?q=80&w=2070&auto=format&fit=crop", // Combat action
-  training1: "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=2070&auto=format&fit=crop", // Tactical focus
+  action: "http://www.kravmaga.hk/images/2021821.jpg", // Combat action
+  training1: "http://www.kravmaga.hk/images/202188.jpg", // Tactical focus
   training2: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2070&auto=format&fit=crop", // Yoga/Flexibility
-  videoPoster: "https://images.unsplash.com/photo-1552072805-2a9039d00e57?q=80&w=2070&auto=format&fit=crop", // Tactical video poster
-  logo: "https://yun.kmcn.vip/c3364607vodcq1304509294/38796dee1253642699394401777/sE8mAUE1JgAA.mp4?poster=https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?w=100&h=100&fit=crop", // Placeholder logo
+  videoPoster: "http://www.kravmaga.hk/images/20218.jpg", // Tactical video poster
+  logo: "https://www.kmcn.vip/attachment/images/20240530/606d01eb396773802b32759b62a72b66.png", // KMCN Logo
 };
 
 const fadeIn = {
@@ -228,9 +228,9 @@ export default function App() {
       <nav className={`fixed top-0 w-full z-[70] transition-all duration-1000 ${scrolled ? 'bg-kmcn-bg/80 backdrop-blur-3xl py-4 border-b border-white/5' : 'py-12'}`}>
         <div className="container mx-auto px-8 flex justify-between items-center">
           <div className="flex items-center gap-4 group cursor-pointer">
-            <div className="w-12 h-12 bg-kmcn-red flex items-center justify-center overflow-hidden group-hover:rotate-12 transition-transform duration-700 shadow-[0_0_20px_rgba(255,0,0,0.5)]">
+            <div className="w-12 h-12 flex items-center justify-center overflow-hidden group-hover:rotate-12 transition-transform duration-700">
               {/* LOGO CODE START - You can replace the img src below with your own logo file */}
-              <img src={IMAGES.logo} alt="KMCN Logo" className="w-full h-full object-cover" />
+              <img src={IMAGES.logo} alt="KMCN Logo" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
               {/* LOGO CODE END */}
             </div>
             <div className="flex flex-col">
@@ -303,9 +303,15 @@ export default function App() {
                 </TacticalButton>
                 <div className="flex items-center gap-8">
                   <div className="flex -space-x-6">
-                    {[1,2,3,4].map(i => (
+                    {/* 精英学员头像位置 (Elite Student Avatars) - 可以在此替换为真实的学员头像URL */}
+                    {[
+                      "https://images.unsplash.com/photo-1544168190-79c15427015f?w=100&h=100&fit=crop", // 头像 1
+                      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop", // 头像 2
+                      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop", // 头像 3
+                      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"  // 头像 4
+                    ].map((avatarUrl, i) => (
                       <div key={i} className="w-14 h-14 rounded-full border-2 border-kmcn-bg bg-zinc-900 overflow-hidden shadow-xl">
-                        <img src={`https://i.pravatar.cc/100?img=${i+20}`} alt="User" />
+                        <img src={avatarUrl} alt="Elite Student" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                       </div>
                     ))}
                   </div>
@@ -724,7 +730,7 @@ export default function App() {
                 */}
                 <div className="w-48 h-48 bg-zinc-900 relative overflow-hidden border border-white/5 group-hover:border-kmcn-red/50 transition-colors duration-700 flex-shrink-0">
                   <img 
-                    src="https://picsum.photos/seed/instructor/400/400" 
+                    src="http://www.kravmaga.hk/images/20218.jpg" 
                     alt="KMCN马伽术权威总教官" 
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                     referrerPolicy="no-referrer"
@@ -847,9 +853,18 @@ export default function App() {
               <div className="absolute top-0 right-0 p-6 font-mono text-[7px] text-zinc-700 tracking-[0.5em]">SECURE_CHANNEL_ENCRYPTED_V2.0</div>
               <div className="text-center relative z-10">
                 <h3 className="text-2xl font-display uppercase mb-10 tracking-tighter text-gradient-red">扫码预约评估课 // SCAN TO BOOK</h3>
-                <div className="inline-block p-6 bg-white rounded-sm mb-10 shadow-[0_0_60px_rgba(255,255,255,0.15)] group cursor-pointer hover:scale-105 transition-transform duration-700">
-                  <div className="w-48 h-48 bg-zinc-100 flex items-center justify-center text-zinc-400 font-mono text-[10px] tracking-[0.3em] border-4 border-zinc-200">
-                    [ QR_ENCRYPTED_DATA ]
+                <div className="flex flex-col items-center justify-center gap-8 mb-10">
+                  <div className="inline-block p-4 bg-white rounded-sm shadow-[0_0_60px_rgba(255,255,255,0.15)] group cursor-pointer hover:scale-105 transition-transform duration-700">
+                    <div className="w-40 h-40 bg-zinc-100 flex items-center justify-center border-4 border-zinc-200 overflow-hidden">
+                      <img src="https://www.kmcn.vip/attachment/images/20240530/14be70983e86caece2e6067e79ba94af_200_200.jpg" alt="预约评估课二维码" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    </div>
+                    <p className="text-zinc-800 font-bold text-xs mt-3">预约评估课</p>
+                  </div>
+                  <div className="inline-block p-4 bg-white rounded-sm shadow-[0_0_60px_rgba(255,255,255,0.15)] group cursor-pointer hover:scale-105 transition-transform duration-700">
+                    <div className="w-40 h-40 bg-zinc-100 flex items-center justify-center border-4 border-zinc-200 overflow-hidden">
+                      <img src="https://www.kravmaga.hk/images/09/KMCN.jpg" alt="KMCN以色列馬伽術小程序" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    </div>
+                    <p className="text-zinc-800 font-bold text-xs mt-3">KMCN以色列馬伽術小程序</p>
                   </div>
                 </div>
                 <p className="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.6em] leading-relaxed">
