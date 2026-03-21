@@ -26,7 +26,8 @@ import {
   Heart,
   Home,
   Globe,
-  Play
+  Play,
+  X
 } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 
@@ -50,6 +51,61 @@ const fadeIn = {
   viewport: { once: true },
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
 };
+
+const packageDetails = [
+  {
+    title: "基础防卫协议 (9小时三天定制课 A/B班)",
+    image: "http://www.kravmaga.hk/images/b1.jpg",
+    content: (
+      <ul className="space-y-3 list-decimal pl-5 text-sm font-light">
+        <li>小手腕被抓不懂礼貌的同龄者抓住，如何挣脱同时自己能逃跑（2）</li>
+        <li>后方不怀好意的人抓住我们的肩膀，怎样才能安全逃脱（1）</li>
+        <li>被陌生人抓住头发，如何有效挣脱及防守（1）</li>
+        <li>被人搂住腰拖走，如何快速反击制服他（2）</li>
+        <li>被坏蛋抓住手拉扯，如何利用技巧摔倒对方（1）</li>
+        <li>衣领胸口被抓，面对霸道挑衅如何快速摔倒他（2）</li>
+        <li>双手被人抓住后，怎样保护自己以及反击（1）</li>
+        <li>如何利用手带背包、雨伞等随身物品保护自己，关键时刻能防身救命</li>
+        <li>倒地后的自我保护以及防御来袭的施暴者（1）</li>
+      </ul>
+    )
+  },
+  {
+    title: "进阶响应课程 (18小时六天进阶定制课 A/B班)",
+    image: "http://www.kravmaga.hk/images/b2.jpg",
+    content: (
+      <ul className="space-y-3 list-decimal pl-5 text-sm font-light">
+        <li>被强壮的手抓住后，如何利用技巧挣脱（1）</li>
+        <li>被后面的陌生人抓住头发，我们如何挣脱（1）</li>
+        <li>面对从侧方伸过来的手臂，如何巧妙逃脱（1）</li>
+        <li>衣服被双手抓住撕扯推搡，如何摆脱不利局面（2）</li>
+        <li>纠缠中衣领不幸被抓住，如何快速放倒对方（1）</li>
+        <li>路上遭遇坏蛋后方熊抱，如何快速挣脱安全回家（2）</li>
+        <li>被人掐住脖子，如何正确防御保护自己（4）</li>
+        <li>脖子被后方突如其来的手勒住，马伽术教你如何挣脱</li>
+        <li>被陌生人从前面抱住，如何迅速反击安全逃脱（2）</li>
+        <li>后方被人搂住，如何进行有效的反击(1)</li>
+        <li>面对挥来的一拳，如何避其锋芒反击对手（1）</li>
+        <li>面对多人威胁如何有效保护自己</li>
+      </ul>
+    )
+  },
+  {
+    title: "生存技术能力套餐 (高级特训)",
+    image: "http://www.kravmaga.hk/images/b3.jpg",
+    content: (
+      <div className="space-y-4 text-sm font-light">
+        <p>包含9小时与18小时所有基础与进阶防卫技能，并在此基础上进行深度拓展：</p>
+        <ul className="space-y-3 list-disc pl-5">
+          <li><strong>全场景综合实战演练：</strong> 模拟更复杂、多变的真实危机场景，提升临场反应速度。</li>
+          <li><strong>定制化极端生存技术：</strong> 针对特定高危环境（如狭小空间、昏暗环境）的防卫策略。</li>
+          <li><strong>精英级战术思维培养：</strong> 从被动防卫到主动态势感知，培养提前规避风险的战略眼光。</li>
+          <li><strong>长期能力维持与心理建设：</strong> 持续的压力测试与心理辅导，打造坚不可摧的防卫本能与自信心。</li>
+        </ul>
+      </div>
+    )
+  }
+];
 
 const DataStreamBackground = () => {
   const [streams, setStreams] = useState<{ id: number; left: string; delay: string; duration: string }[]>([]);
@@ -189,6 +245,7 @@ const VideoPlayer = ({ url, poster }: { url: string, poster: string }) => {
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.98]);
@@ -228,7 +285,7 @@ export default function App() {
       <nav className={`fixed top-0 w-full z-[70] transition-all duration-1000 ${scrolled ? 'bg-kmcn-bg/80 backdrop-blur-3xl py-4 border-b border-white/5' : 'py-12'}`}>
         <div className="container mx-auto px-8 flex justify-between items-center">
           <div className="flex items-center gap-4 group cursor-pointer">
-            <div className="w-12 h-12 flex items-center justify-center overflow-hidden group-hover:rotate-12 transition-transform duration-700">
+            <div className="w-16 h-16 flex items-center justify-center overflow-hidden group-hover:rotate-12 transition-transform duration-700">
               {/* LOGO CODE START - You can replace the img src below with your own logo file */}
               <img src={IMAGES.logo} alt="KMCN Logo" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
               {/* LOGO CODE END */}
@@ -569,6 +626,40 @@ export default function App() {
 
       <div className="section-divider" />
 
+      {/* What can you gain Section */}
+      <section className="py-24 bg-zinc-950 relative overflow-hidden">
+        <div className="container mx-auto px-8 relative z-10">
+          <TacticalHeader 
+            title="可以收获什么？ // WHAT YOU WILL GAIN" 
+            subtitle="Comprehensive physical and mental development through Krav Maga." 
+            accent="green"
+          />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "危险认知", desc: "理解青少年面临的危险和安全问题（来自成年攻击者和同龄的霸凌），并学习妥当处理的能力。", icon: <Eye className="w-6 h-6" /> },
+              { title: "防范未然", desc: "提前行动和避免危险，这包括态势感知、预防暴力、应对来自陌生人的危险等。", icon: <Radar className="w-6 h-6" /> },
+              { title: "基础防卫", desc: "学习和训练基本的击打、防守技术以及学习定位合适的攻击目标。", icon: <Target className="w-6 h-6" /> },
+              { title: "身体素质", desc: "锻炼身体能力，如协调性、功能性力量和灵活性，这是未来健康成长的重要基础。", icon: <Activity className="w-6 h-6" /> },
+              { title: "核心技术", desc: "学习和练习在少儿马伽术的自卫技术（含如何应对击打、脚踢、熊抱、抓拽、跌倒等）。", icon: <Shield className="w-6 h-6" /> },
+              { title: "心理抗压", desc: "模拟情境训练、毅力和压力训练。训练压力下的反应能力和镇定应对的能力。", icon: <Brain className="w-6 h-6" /> }
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                {...fadeIn}
+                transition={{ delay: i * 0.1 }}
+                className="glass-green p-8 border-l-2 border-kmcn-green/30 hover:border-kmcn-green transition-all group"
+              >
+                <div className="text-kmcn-green mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
+                <h4 className="text-xl font-display uppercase mb-3 text-white">{item.title}</h4>
+                <p className="text-zinc-400 text-sm leading-relaxed font-light">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider" />
+
       {/* Youth Packages Section */}
       <section id="packages" className="py-24 bg-tactical-light relative overflow-hidden">
         <div className="container mx-auto px-8">
@@ -622,10 +713,64 @@ export default function App() {
                   ))}
                 </ul>
                 <p className="text-zinc-500 text-[10px] leading-relaxed italic mb-8 border-l border-kmcn-green/30 pl-4">{pkg.desc}</p>
-                <TacticalButton variant="green" className="w-full py-4 text-[10px]">获取孩子专属防卫方案 // GET CUSTOM PLAN</TacticalButton>
+                <TacticalButton 
+                  variant="green" 
+                  className="w-full py-4 text-[10px]"
+                  onClick={() => setSelectedPackage(i)}
+                >
+                  查看课程详情 // VIEW DETAILS
+                </TacticalButton>
               </motion.div>
             ))}
           </div>
+
+          <AnimatePresence>
+            {selectedPackage !== null && (
+              <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => setSelectedPackage(null)}
+                  className="absolute inset-0 bg-black/90 backdrop-blur-sm cursor-pointer"
+                />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  className="relative w-full max-w-5xl max-h-[90vh] bg-zinc-950 flex flex-col md:flex-row overflow-hidden shadow-2xl rounded-2xl"
+                >
+                  <button 
+                    onClick={() => setSelectedPackage(null)}
+                    className="absolute top-4 right-4 z-20 w-10 h-10 bg-black/40 hover:bg-kmcn-green text-white flex items-center justify-center rounded-full backdrop-blur-md transition-all"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                  <div className="w-full md:w-2/5 h-64 md:h-auto relative flex-shrink-0">
+                    <img 
+                      src={packageDetails[selectedPackage].image} 
+                      alt={packageDetails[selectedPackage].title}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-zinc-950 via-transparent to-transparent opacity-80" />
+                  </div>
+                  <div className="w-full md:w-3/5 p-8 md:p-12 overflow-y-auto flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-8 h-1 bg-kmcn-green" />
+                      <span className="font-mono text-[10px] text-kmcn-green tracking-[0.3em] uppercase">Course Details</span>
+                    </div>
+                    <h4 className="text-2xl md:text-3xl font-display uppercase tracking-tighter text-white mb-8">
+                      {packageDetails[selectedPackage].title}
+                    </h4>
+                    <div className="text-zinc-400 font-light text-sm leading-relaxed">
+                      {packageDetails[selectedPackage].content}
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
@@ -730,7 +875,7 @@ export default function App() {
                 */}
                 <div className="w-48 h-48 bg-zinc-900 relative overflow-hidden border border-white/5 group-hover:border-kmcn-red/50 transition-colors duration-700 flex-shrink-0">
                   <img 
-                    src="http://www.kravmaga.hk/images/20218.jpg" 
+                    src="http://www.kravmaga.hk/images/2021.jpg" 
                     alt="KMCN马伽术权威总教官" 
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                     referrerPolicy="no-referrer"
